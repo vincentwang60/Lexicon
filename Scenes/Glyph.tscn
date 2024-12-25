@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7kjnxiq5t06n"]
+
+[ext_resource type="Script" path="res://Scripts/Glyph.cs" id="1_tj5bk"]
+
+[node name="Glyph" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_tj5bk")

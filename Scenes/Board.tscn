@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://crily18cgtgg6"]
+
+[ext_resource type="Script" path="res://Scripts/Board.cs" id="1_6x63w"]
+[ext_resource type="Texture2D" uid="uid://c6dt17ktaeoeq" path="res://Assets/Sprites/Board.png" id="2_7wqy8"]
+
+[node name="Board" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_6x63w")
+
+[node name="Grid" type="GridContainer" parent="."]
+offset_right = 600.0
+offset_bottom = 600.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(300, 300)
+texture = ExtResource("2_7wqy8")
