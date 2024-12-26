@@ -1,6 +1,40 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkfhnl3coac1g"]
+[gd_scene load_steps=5 format=3 uid="uid://dkfhnl3coac1g"]
 
-[ext_resource type="Script" path="res://scenes/Main.cs" id="1_hqj4n"]
+[ext_resource type="Script" path="res://Scripts/Combat.cs" id="1_s3uus"]
+[ext_resource type="PackedScene" uid="uid://crily18cgtgg6" path="res://Scenes/Board.tscn" id="2_cnksc"]
+[ext_resource type="PackedScene" uid="uid://c4wuvbihdq54q" path="res://Scenes/Hand.tscn" id="3_6tac5"]
+[ext_resource type="Script" path="res://Scripts/Deck.cs" id="4_788jw"]
 
-[node name="Combat" type="Node2D"]
-script = ExtResource("1_hqj4n")
+[node name="Combat" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_s3uus")
+
+[node name="Board" parent="." instance=ExtResource("2_cnksc")]
+offset_left = 109.0
+offset_top = 190.0
+offset_right = 109.0
+offset_bottom = 190.0
+
+[node name="Hand" parent="." instance=ExtResource("3_6tac5")]
+layout_mode = 1
+anchors_preset = 7
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 38.0
+offset_top = -108.0
+offset_right = 38.0
+offset_bottom = -108.0
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Deck" type="Node" parent="."]
+script = ExtResource("4_788jw")
+
+[node name="Cursor" type="Node2D" parent="."]

@@ -1,8 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://b7kjnxiq5t06n"]
+[gd_scene load_steps=4 format=3 uid="uid://b7kjnxiq5t06n"]
 
 [ext_resource type="Script" path="res://Scripts/Glyph.cs" id="1_tj5bk"]
+[ext_resource type="Texture2D" uid="uid://dhuu2qg4s1jag" path="res://Assets/Sprites/Glyphs.png" id="2_vvm4g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yfm8t"]
+radius = 39.0128
 
 [node name="Glyph" type="Control"]
+z_index = 1
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_tj5bk")
+
+[node name="GlyphSprite" type="Sprite2D" parent="."]
+z_index = 1
+texture = ExtResource("2_vvm4g")
+
+[node name="GlyphShape" type="Area2D" parent="."]
+z_index = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GlyphShape"]
+z_index = 1
+shape = SubResource("CircleShape2D_yfm8t")
+
+[connection signal="input_event" from="GlyphShape" to="." method="OnGlyphClick"]
