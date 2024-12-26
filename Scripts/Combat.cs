@@ -6,6 +6,7 @@ public partial class Combat : Control
 {
 	private Deck deck {get; set;}
 	private Hand hand {get; set;}
+	private Tile hoveringTile {get; set;}
 	public override void _Ready()
 	{
 		hand = GetNode<Hand>("Hand");
@@ -26,35 +27,69 @@ public partial class Combat : Control
 		
 	}
 
-	public void PickUpGlyph(Glyph glyph) {
+    public override void _Input(InputEvent @event)
+    {
+		if (@event.IsActionPressed("RClick")) {
+			DropGlyphInHand();
+		}
+    }
+
+    public void HandleGlyphClicked(Glyph glyph) {
 		Node2D cursor = GetNode<Node2D>("Cursor");
 		var PickUp = new Action<Glyph>((glyph) => { 
-			glyph.dragging = true;
-			hand.grid.RemoveChild(glyph);
+			glyph.GetParent().RemoveChild(glyph);
 			cursor.AddChild(glyph);			
 		 } );
 		var Drop = new Action<Glyph>((glyph) => { 
-			glyph.dragging = false;
 			cursor.RemoveChild(glyph);
 			hand.grid.AddChild(glyph);
 		 } );
-		 
-		if (cursor.GetChildren().Count == 0) {
+
+		if (cursor.GetChildCount() == 0) {
 			// Pick up glyph with empty cursor
-			GD.Print("Picking up new glyph ", glyph.glyphType);
 			PickUp(glyph);
 		}
 		else if (glyph != cursor.GetChild(0)) {
 			Glyph cursorChild = cursor.GetChild(0) as Glyph;
 			// Drop currently dragged and swap for new glyph
-			GD.Print("Dropping glyph ", cursorChild.glyphType, ", picking up ", glyph.glyphType);
 			Drop(cursorChild);
 			PickUp(glyph);
 		}
 	}
 
+	public void HandleGlyphReleased(Glyph glyph) {
+		Node2D cursor = GetNode<Node2D>("Cursor");
+		if (hoveringTile != null && glyph.dragging) {
+			cursor.RemoveChild(glyph);
+			hoveringTile.AddGlyph(glyph);
+		}
+		else {
+			cursor.RemoveChild(glyph);
+			hand.grid.AddChild(glyph);
+		}
+	}
+
+	public void UpdateHoveringTile(Tile tile, bool entered) {
+		if (entered) {
+			hoveringTile = tile;
+		}
+		else if (hoveringTile == tile) {
+			hoveringTile = null;
+		}
+	}
+
+	private void DropGlyphInHand() {
+		Node2D cursor = GetNode<Node2D>("Cursor");
+		if (cursor.GetChildCount() != 0) {
+			Glyph cursorChild = cursor.GetChild(0) as Glyph;
+			GD.Print("Dropping glyph ", cursorChild.glyphType);
+			cursorChild.dragging = false;
+			cursor.RemoveChild(cursorChild);
+			hand.grid.AddChild(cursorChild);
+		}
+	}
+
 	private Deck InitDeck(Dictionary<GlyphType, int> dict) {
-		GD.Print("Initializing deck");
 		Deck deck = GetNode<Deck>("Deck");
 		foreach(KeyValuePair<GlyphType, int> entry in dict) {
 			for (int i = 0; i < entry.Value; i++) {

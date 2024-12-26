@@ -33,7 +33,7 @@ public partial class Deck : Node
 	}
 
 	public void PrintDeck() {
-		string output = "";
+		string output = "Deck order: ";
 		foreach (var glyph in glyphs) {
 			output += glyph.glyphType + ", ";
 		}

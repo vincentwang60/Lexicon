@@ -16,10 +16,10 @@ mouse_filter = 1
 script = ExtResource("1_s3uus")
 
 [node name="Board" parent="." instance=ExtResource("2_cnksc")]
-offset_left = 109.0
-offset_top = 190.0
-offset_right = 109.0
-offset_bottom = 190.0
+offset_left = 101.0
+offset_top = 118.0
+offset_right = 101.0
+offset_bottom = 118.0
 
 [node name="Hand" parent="." instance=ExtResource("3_6tac5")]
 layout_mode = 1

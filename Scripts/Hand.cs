@@ -23,7 +23,8 @@ public partial class Hand : Control
     public void AddGlyph(GlyphType glyphType) {
 		Glyph glyph = GlyphScene.Instantiate<Glyph>();
 		glyph.glyphType = glyphType;
-		glyph.GlyphClicked += (GetParent() as Combat).PickUpGlyph;
+		glyph.GlyphClicked += (GetParent() as Combat).HandleGlyphClicked;
+		glyph.GlyphReleased += (GetParent() as Combat).HandleGlyphReleased;
 		grid.AddChild(glyph);
 	}
 }

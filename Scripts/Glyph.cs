@@ -18,6 +18,8 @@ public partial class Glyph : Control
 {
     [Signal]
     public delegate void GlyphClickedEventHandler(Glyph glyph);
+	[Signal]
+    public delegate void GlyphReleasedEventHandler(Glyph glyph);
 	[Export]
 	public GlyphType glyphType {get; set;}
 	public bool dragging {get; set;} = false;
@@ -38,7 +40,12 @@ public partial class Glyph : Control
 	
 	private void OnGlyphClick(Node viewport, InputEvent @event, int shapeIdx) {
 		if (@event.IsActionPressed("Click")) {
+			dragging = true;
 			EmitSignal("GlyphClicked", this);
+		}
+		if (@event.IsActionReleased("Click") && dragging) {
+			EmitSignal("GlyphReleased", this);
+			dragging = false;
 		}
 	}
 

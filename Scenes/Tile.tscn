@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://di47wwhcpvxu1"]
+
+[ext_resource type="Script" path="res://Scripts/Tile.cs" id="1_ahuvh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w1g83"]
+size = Vector2(121.25, 120)
+
+[node name="Tile" type="Control"]
+custom_minimum_size = Vector2(120, 120)
+layout_direction = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 110.0
+offset_bottom = 110.0
+mouse_filter = 1
+script = ExtResource("1_ahuvh")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(60.375, 60)
+shape = SubResource("RectangleShape2D_w1g83")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 120.0
+
+[connection signal="mouse_entered" from="Area2D" to="." method="OnTileEntered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="OnTileExited"]
