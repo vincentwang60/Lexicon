@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://di47wwhcpvxu1"]
 
-[ext_resource type="Script" path="res://Scripts/Tile.cs" id="1_ahuvh"]
+[ext_resource type="Script" path="res://Scripts/Tile.cs" id="1_uawm7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w1g83"]
 size = Vector2(121.25, 120)
@@ -13,7 +13,7 @@ anchors_preset = 0
 offset_right = 110.0
 offset_bottom = 110.0
 mouse_filter = 1
-script = ExtResource("1_ahuvh")
+script = ExtResource("1_uawm7")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -21,7 +21,7 @@ script = ExtResource("1_ahuvh")
 position = Vector2(60.375, 60)
 shape = SubResource("RectangleShape2D_w1g83")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="TileCenterContainer" type="CenterContainer" parent="."]
 layout_mode = 0
 offset_right = 120.0
 offset_bottom = 120.0

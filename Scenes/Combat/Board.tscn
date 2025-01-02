@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://crily18cgtgg6"]
 
 [ext_resource type="Script" path="res://Scripts/Board.cs" id="1_6x63w"]
-[ext_resource type="Texture2D" uid="uid://d2icesvchcl6f" path="res://Assets/Sprites/Board.png" id="2_7wqy8"]
-[ext_resource type="PackedScene" uid="uid://di47wwhcpvxu1" path="res://Scenes/Tile.tscn" id="2_g1tfw"]
+[ext_resource type="Texture2D" uid="uid://dd3ijbwqap54a" path="res://Assets/Sprites/Board.png" id="2_7wqy8"]
+[ext_resource type="PackedScene" uid="uid://di47wwhcpvxu1" path="res://Scenes/Combat/Tile.tscn" id="2_g1tfw"]
 
 [node name="Board" type="Control"]
 layout_mode = 3

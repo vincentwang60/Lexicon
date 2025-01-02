@@ -22,11 +22,14 @@ public partial class Glyph : Control
     public delegate void GlyphReleasedEventHandler(Glyph glyph);
 	[Export]
 	public GlyphType glyphType {get; set;}
+	// If picked up off Board, sets to Tile source. Removed when released
+	public Tile tileSource {get; set;}
 	public bool dragging {get; set;} = false;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		var glyphSprite = GetNode<Sprite2D>("GlyphSprite");
+		GD.Print("type:", glyphType);
 		glyphSprite.Texture = GetTexture(glyphType);
 	}
 
@@ -45,13 +48,14 @@ public partial class Glyph : Control
 		}
 		if (@event.IsActionReleased("Click") && dragging) {
 			EmitSignal("GlyphReleased", this);
+			tileSource = null;
 			dragging = false;
 		}
 	}
 
     private AtlasTexture GetTexture(GlyphType glyphType) {
 		AtlasTexture glyphAtlas = new AtlasTexture {
-			Atlas = GD.Load<Texture2D>("res://Assets/Sprites/Glyphs.png"),
+			Atlas = GD.Load<Texture2D>("res://Assets/Sprites/Glyph.png"),
 			Region = new Rect2((float)glyphType * Constants.glyphWidth, 0, Constants.glyphWidth, Constants.glyphWidth)
 		};
 		return glyphAtlas;

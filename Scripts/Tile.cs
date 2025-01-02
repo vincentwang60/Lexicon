@@ -9,7 +9,8 @@ public partial class Tile : Control
     [Signal]
     public delegate void TileExitedEventHandler(Tile tile, bool entered);
 	[Export]
-	public Vector2 tileCoords {get; set;}
+	public int[] tileCoords {get; set;}
+	public Glyph contents {get; set;}
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -29,7 +30,8 @@ public partial class Tile : Control
 	}
 
 	public void AddGlyph(Glyph glyph) {
-		CenterContainer center = GetNode<CenterContainer>("CenterContainer");
+		CenterContainer center = GetNode<CenterContainer>("TileCenterContainer");
 		center.AddChild(glyph);
+		contents = glyph;
 	}
 }

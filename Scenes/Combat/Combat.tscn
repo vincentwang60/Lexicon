@@ -1,0 +1,73 @@
+[gd_scene load_steps=6 format=3 uid="uid://dkfhnl3coac1g"]
+
+[ext_resource type="Script" path="res://Scripts/Combat.cs" id="1_s3uus"]
+[ext_resource type="PackedScene" uid="uid://crily18cgtgg6" path="res://Scenes/Combat/Board.tscn" id="2_cnksc"]
+[ext_resource type="PackedScene" uid="uid://c4wuvbihdq54q" path="res://Scenes/Combat/Hand.tscn" id="3_6tac5"]
+[ext_resource type="Script" path="res://Scripts/Deck.cs" id="4_788jw"]
+[ext_resource type="PackedScene" uid="uid://cx5yx7lbai1ag" path="res://Scenes/Combat/Book.tscn" id="5_3jtob"]
+
+[node name="Combat" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_s3uus")
+
+[node name="Board" parent="." instance=ExtResource("2_cnksc")]
+offset_left = 75.0
+offset_top = 118.0
+offset_right = 75.0
+offset_bottom = 118.0
+scale = Vector2(0.6, 0.6)
+
+[node name="Hand" parent="." instance=ExtResource("3_6tac5")]
+layout_mode = 1
+anchors_preset = 7
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 38.0
+offset_top = -108.0
+offset_right = 38.0
+offset_bottom = -108.0
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Deck" type="Node" parent="."]
+script = ExtResource("4_788jw")
+
+[node name="Cursor" type="Node2D" parent="."]
+
+[node name="Book" parent="." instance=ExtResource("5_3jtob")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -190.0
+offset_top = -233.0
+offset_right = -190.0
+offset_bottom = -233.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -49.0
+offset_top = -202.0
+offset_right = 49.0
+offset_bottom = -172.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Cast Words"
+
+[connection signal="pressed" from="Button" to="." method="HandleButtonPress"]

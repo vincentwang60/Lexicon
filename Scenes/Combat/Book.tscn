@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx5yx7lbai1ag"]
+
+[ext_resource type="Script" path="res://Scripts/Book.cs" id="1_jeral"]
+[ext_resource type="PackedScene" uid="uid://cy6wpq0tyjrw4" path="res://Scenes/Combat/Word.tscn" id="1_xoqno"]
+
+[node name="Book" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_jeral")
+WordScene = ExtResource("1_xoqno")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 350.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="BookLeft" type="VBoxContainer" parent="PanelContainer/HBoxContainer/Control"]
+layout_mode = 2
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 481.0
+offset_bottom = 859.0
+scale = Vector2(0.4, 0.4)
+
+[node name="Control2" type="Control" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="BookRight" type="VBoxContainer" parent="PanelContainer/HBoxContainer/Control2"]
+layout_mode = 2
+offset_left = 201.0
+offset_top = 4.0
+offset_right = 678.0
+offset_bottom = 859.0
+scale = Vector2(0.4, 0.4)

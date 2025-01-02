@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c4wuvbihdq54q"]
 
-[ext_resource type="Script" path="res://Scripts/Hand.cs" id="1_fdfrn"]
-[ext_resource type="PackedScene" uid="uid://b7kjnxiq5t06n" path="res://Scenes/Glyph.tscn" id="2_ifhex"]
+[ext_resource type="Script" path="res://Scripts/Hand.cs" id="1_oaudw"]
+[ext_resource type="PackedScene" uid="uid://b7kjnxiq5t06n" path="res://Scenes/Glyph.tscn" id="2_ah0lr"]
 
 [node name="Hand" type="Control"]
 layout_mode = 3
@@ -14,8 +14,8 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.9, 0.9)
 mouse_filter = 1
-script = ExtResource("1_fdfrn")
-GlyphScene = ExtResource("2_ifhex")
+script = ExtResource("1_oaudw")
+GlyphScene = ExtResource("2_ah0lr")
 
 [node name="HandGrid" type="GridContainer" parent="."]
 layout_mode = 1
